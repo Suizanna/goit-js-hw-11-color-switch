@@ -9,20 +9,27 @@ const colors = [
 
   const refs = {
     body: document.querySelector('body'),
-    startBtn: document.querySelector('button[data-action = " start "]'),
-    stopBtn: document.querySelector('button[data-action = " stop "]')
+    startBtn: document.querySelector('button[data-action=start]'),
+    stopBtn: document.querySelector('button[data-action="stop"]'),
   }
+ 
+
+  let timerId = null;
+  const isActive = false;
 
   refs.startBtn.addEventListener('click', startChangeColor);
   refs.stoptBtn.addEventListener('click', stopChangeColor);
-  let timerId = null;
 
 function startChangeColor() {
   const timerId  = setInterval(() => {
 console.log("Click the button");
-  }, 1000);
+  
+if(isActive) {
+    return;
 }
-
+  }, 1000);
+ 
+};
 
 function stopChangeColor() {  
   clearInterval(timerId); 
