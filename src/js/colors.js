@@ -15,23 +15,31 @@ const colors = [
  
 
   let timerId = null;
-  const isActive = false;
+ 
 
   refs.startBtn.addEventListener('click', startChangeColor);
-  refs.stoptBtn.addEventListener('click', stopChangeColor);
+  refs.stopBtn.addEventListener('click', stopChangeColor);
 
 function startChangeColor() {
-  const timerId  = setInterval(() => {
-console.log("Click the button");
-  
-if(isActive) {
-    return;
-}
+  timerId = setInterval(() => {
+    // refs.startBtn.disabled = true;
+    // refs.stopBtn.disabled = false;
+      //или
+    refs.startBtn.setAttribute('disabled', 'disabled');
+    refs.stopBtn.removeAttribute('disabled');
+    refs.body.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length-1)];
+   console.log("Click the button");
+
   }, 1000);
  
 };
 
 function stopChangeColor() {  
+  // refs.startBtn.disabled = false;
+  // refs.stopBtn.disabled = true;
+    //или
+  refs.startBtn.removeAttribute('disabled');
+  refs.stopBtn.setAttribute('disabled', 'disabled');
   clearInterval(timerId); 
   console.log("setInterval stopped!");
 }
