@@ -22,25 +22,16 @@ const colors = [
 
 function startChangeColor() {
   timerId = setInterval(() => {
-    // refs.startBtn.disabled = true;
-    // refs.stopBtn.disabled = false;
-      //или
-    refs.startBtn.setAttribute('disabled', 'disabled');
-    refs.stopBtn.removeAttribute('disabled');
     refs.body.style.backgroundColor = colors[randomIntegerFromInterval(0, colors.length-1)];
    console.log("Click the button");
-
+    
   }, 1000);
- 
+  refs.startBtn.disabled = true;
 };
 
 function stopChangeColor() {  
-  // refs.startBtn.disabled = false;
-  // refs.stopBtn.disabled = true;
-    //или
-  refs.startBtn.removeAttribute('disabled');
-  refs.stopBtn.setAttribute('disabled', 'disabled');
-  clearInterval(timerId); 
+    clearInterval(timerId); 
+  refs.startBtn.disabled = false;
   console.log("setInterval stopped!");
 }
 
